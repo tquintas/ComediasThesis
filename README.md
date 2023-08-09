@@ -7,11 +7,8 @@ Introdução:
 
 Revisão Bibliográfica:
 	Piano preparado
-
 	bitKlavier
-
 	Instalação Performativa
-
 	Problemática e introdução para a obra
 
 
