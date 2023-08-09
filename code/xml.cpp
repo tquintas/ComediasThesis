@@ -5591,38 +5591,3 @@ namespace bkr
             };
     };
 };
-
-/*
-using namespace bkr;
-
-int main()
-{
-    int comp = 200;
-    XAttribute* id1 = XAttribute::bitKlavierAttributes.ID(1);
-    XAttribute* name = XAttribute::bitKlavierAttributes.Name("test");
-    for (int i = 1; i <= 5; ++i)
-    {
-        XAttribute* g_name = XAttribute::bitKlavierAttributes.Name("XGallery"+to_string(i));
-        XKeymap* km = new XKeymap(id1, name);
-        km->RandomKeymap(comp);
-        XDirect* dr = new XDirect(id1, name);
-        dr->RandomDirect(comp);
-        km->Connect(dr);
-        XSynchronic* sy = new XSynchronic(id1, name);
-        sy->RandomSynchronic(comp);
-        km->Connect(sy);
-        XBlendronic* bl = new XBlendronic(id1, name);
-        bl->RandomBlendronic(comp);
-        sy->Connect(bl);
-        XPiano* piano = new XPiano(id1, g_name);
-        piano->AddPreparation(km);
-        piano->AddPreparation(dr);
-        piano->AddPreparation(sy);
-        piano->AddPreparation(bl);
-        BitKlavier* bk = new BitKlavier(g_name);
-        bk->AddPiano(piano);
-        bk->Save();
-    }
-    return 0;
-};
-*/

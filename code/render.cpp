@@ -76,6 +76,23 @@ std::vector<int> LoadVector(std::vector<std::tuple<int, int>>& notes)
     return indexes;
 }
 
+void MakeSetupGalleries()
+{
+    for (int i = 1; i <= 5; ++i)
+    {
+        XAttribute* g_name = XAttribute::bitKlavierAttributes.Name("XGallery"+to_string(i));
+        BitKlavier* bk = new BitKlavier(g_name);
+        bk->Save();
+    }
+}
+
+void MakeSetupNote()
+{
+    SynthNote* sn = new SynthNote();
+    XSynth* qs = new XSynth(sn, std::vector<int>{60}, std::vector<int>{1}, std::vector<int>{});
+    qs->SaveSamplesToBitKlavier();
+}
+
 void MakeSynth(int complexity)
 {
     std::vector<std::tuple<int, int>> notes;
@@ -118,13 +135,20 @@ int main(int argc, char* argv[])
 {
     if (argc != 2)
     {
-        std::cerr << "Usage: " << argv[0] << " <integer_argument> or start" << std::endl;
+        std::cerr << "Usage: " << argv[0] << " <integer_argument>, start or setup" << std::endl;
         return 1;
     }
     if (strcmp(argv[1], "start") == 0)
     {
         DeleteAllSounds();
         BuildVector();
+        return 0;
+    }
+    if (strcmp(argv[1], "setup") == 0)
+    {
+        DeleteAllSounds();
+        MakeSetupNote();
+        MakeSetupGalleries();
         return 0;
     }
     int complexity = std::atoi(argv[1]);

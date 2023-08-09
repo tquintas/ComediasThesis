@@ -1,9 +1,10 @@
 import serial
 import re
 import subprocess
+port = '/dev/cu.usbmodem11401'
 
 try:
-    ser = serial.Serial('/dev/cu.usbmodem11401', 9600)
+    ser = serial.Serial(port, 9600)
     print("Connected and listening to serial port 9600.")
 except:
     raise "Arduino not connected!"

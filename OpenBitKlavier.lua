@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 local lib_path = reaper.GetExtState("Lokasenna_GUI", "lib_path_v2")
 loadfile(lib_path .. "Core.lua")()
 dofile(reaper.GetResourcePath().."/UserPlugins/ultraschall_api.lua")
@@ -5,7 +6,7 @@ dofile(reaper.GetResourcePath().."/UserPlugins/ultraschall_api.lua")
 GUI.req("Classes/Class - Button.lua")()
 
 GUI.name = "Reloading..."
-GUI.x, GUI.y, GUI.w, GUI.h = 0,0,220,270
+GUI.x, GUI.y, GUI.w, GUI.h = 0,0,220,310
 
 GUI.anchor, GUI.corner = "mouse", "C"
 
@@ -32,6 +33,18 @@ local function Reload(i)
     end
 end
 
+local function FXSetup()
+    local tr1 = reaper.GetTrack(0, 0)
+    if tr1 then
+        reaper.ShowMessageBox("Track already created!", "Setup failed...", 0)
+        return
+    end
+    reaper.InsertTrackAtIndex(0, true)
+    local tr = reaper.GetTrack(0, 0)
+    reaper.TrackFX_AddByName(tr, "bitklavier", false, 1)
+    reaper.ShowMessageBox("Create 5 presets.\nFor each N from 1 to 5:\n - Select XGalleryN;\n - Go to Preferences and add the bitSamples folder to the Sample search paths;\n - Select the XSynth sound;\n - Save the preset as N.", "FX Setup", 0)
+end
+
 local function Setup()
     local tr1 = reaper.GetTrack(0, 0)
     if tr1 then
@@ -53,8 +66,6 @@ local function Setup()
         reaper.SetMediaTrackInfo_Value(tr, "I_RECINPUT", 6112)
         reaper.TrackFX_AddByName(tr, "bitklavier", false, 1)
         reaper.TrackFX_SetPreset(tr, 0, i)
-        --reaper.TrackFX_AddByName(tr, "dear", false, 2)
-        --reaper.TrackFX_SetPreset(tr, 1, i)
         reaper.TrackFX_AddByName(tr, "masterlimiter", false, 3)
         if i == 5 then reaper.SetMediaTrackInfo_Value(tr, "I_FOLDERDEPTH", -1) end
     end
@@ -86,12 +97,25 @@ function ShortcutBtns()
         elseif key > 48 and key < 54 then Reload(key - 48) end
     end
     NoKeys = (key == 0)
-end 
+end
+
+GUI.New("setup_btn", "Button", {
+    z = 11,
+    x = 10,
+    y = 10,
+    w = 200,
+    h = 30,
+    caption = "FX Setup",
+    font = 3,
+    col_txt = "txt",
+    col_fill = "elm_frame",
+    func = FXSetup
+})
 
 GUI.New("build_btn", "Button", {
     z = 11,
     x = 10,
-    y = 10,
+    y = 42,
     w = 200,
     h = 30,
     caption = "Build tracks",
@@ -105,7 +129,7 @@ for i = 1,5 do
     GUI.New(i.."_btn", "Button", {
         z = 11,
         x = 10,
-        y = 10 + i*40,
+        y = 82 + (i-1)*32,
         w = 200,
         h = 30,
         caption = "Reload channel "..i,
