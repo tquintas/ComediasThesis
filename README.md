@@ -16,7 +16,7 @@ For this piece to work, you'll need:
 ---
 
 ### Getting started
-Firstly, to use the contents of this repository, you have to clone the repository to a custom folder, connect the Arduino to the computer and hit the reset button, and create all the folders and aliases needed. You can do that running the command:
+Firstly, to use the contents of this repository, you have to clone the repository to a custom folder, connect the Arduino to the computer and hit the reset button, and create all the folders and aliases needed. You can do that running the commands:
 
         cd <custom_folder>
         git clone https://github.com/tquintas/ComediasThesis.git
@@ -32,4 +32,3 @@ Now you're good to start playing!
 ---
 
 ### Play the piece
-
