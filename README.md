@@ -18,10 +18,10 @@ For this piece to work, you'll need:
 ### Getting started
 Firstly, to use the contents of this repository, you have to clone the repository to a custom folder, connect the Arduino to the computer and hit the reset button, and create all the folders and aliases needed. You can do that running the commands:
 
-        cd <custom_folder>
-        git clone https://github.com/tquintas/ComediasThesis.git
-        cd ComediasThesis
-        ./setup.sh
+    $ cd <custom_folder>
+    $ git clone https://github.com/tquintas/ComediasThesis.git
+    $ cd ComediasThesis
+    $ ./setup.sh
 
 That shell command will create an alias of the ``OpenBitKlavier.lua`` file in Reaper's resource pack folder, will create folders for the samples for bitKlavier and will test the connection for Arduino. If the console prints ``Connection success!`` then everything is fine! If not, make sure everything is connected properly and check which port the Arduino is connected to. Usually the port is ``/dev/cu.usbmodem[number]``. Copy that path and on the ``port_listener.py`` file, and paste it on the variable in line 4.
 
