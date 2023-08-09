@@ -39,3 +39,10 @@ To start playing, first check if your keyboard os connected to the the mixer by 
 This will open Reaper, load all the plugins and stablish a serial connection between the Arduino and the python code that renders new samples and new bitKlavier's galleries.
 
 You can, then, start playing! Good luck! :D
+
+## Task list!
+
+- [ ] Create the header files.
+- [ ] Re-read the state of art.
+- [ ] Complete the xml.cpp file.
+- [ ] ...
