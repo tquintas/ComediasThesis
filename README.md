@@ -42,6 +42,7 @@ You can, then, start playing! Good luck! :D
 
 ## Task list!
 
+- [x] Finish the GitHub repository.
 - [ ] Create the header files.
 - [ ] Re-read the state of art.
 - [ ] Complete the xml.cpp file.
