@@ -18,14 +18,14 @@ For this piece to work, you'll need:
 ### Getting started
 - Firstly, to use the contents of this repository, you have to clone the repository to a custom folder, and then create an alias of the ``OpenBitKlavier.lua`` file inside the Scripts folder, on the Reaper's Resource Pack folder. You also need to create a folder called ``bitSamples`` and inside it another folder called ``XSynth``, everything inside your documents directory. You can follow those steps manually or run them in the terminal:
 
-    cd <custom_folder>
-    git clone https://github.com/tquintas/ComediasThesis.git
-    cd <reaper_resource_pack/Scripts>
-    ln -s <custom_folder/OpenBitKlavier.lua> OpenBitKlavier.lua
-    cd ~/Documents
-    mkdir bitSamples
-    cd bitSamples
-    mkdir XSynth
+        cd <custom_folder>
+        git clone https://github.com/tquintas/ComediasThesis.git
+        cd <reaper_resource_pack/Scripts>
+        ln -s <custom_folder/OpenBitKlavier.lua> OpenBitKlavier.lua
+        cd ~/Documents
+        mkdir bitSamples
+        cd bitSamples
+        mkdir XSynth
 
 - Then, head to the Reaper application, go to ```Actions >> Show action list... >> New action... >> Load ReaScript...``` and then select the ``OpenBitKlavier.lua`` file. After that, click on the new action created and add the shortcut ``Cmd+Opt+Shift+O``. Now, if you press that shortcut, a little window will appear with all the options needed for the piece.
 
