@@ -16,13 +16,26 @@ For this piece to work, you'll need:
 ---
 
 ### Getting started
-Firstly, to use the contents of this repository, you have to clone the repository to a custom folder, and then create an alias of the ``OpenBitKlavier.lua`` file inside the Scripts folder, on the Reaper's Resource Pack folder. You can follow those steps manually or writing in the terminal:
+- Firstly, to use the contents of this repository, you have to clone the repository to a custom folder, and then create an alias of the ``OpenBitKlavier.lua`` file inside the Scripts folder, on the Reaper's Resource Pack folder. You also need to create a folder called ``bitSamples`` and inside it another folder called ``XSynth``, everything inside your documents directory. You can follow those steps manually or run them in the terminal:
 
     cd <custom_folder>
     git clone https://github.com/tquintas/ComediasThesis.git
     cd <reaper_resource_pack/Scripts>
     ln -s <custom_folder/OpenBitKlavier.lua> OpenBitKlavier.lua
+    cd ~/Documents
+    mkdir bitSamples
+    cd bitSamples
+    mkdir XSynth
 
-Then, head to the Reaper application, go to ```Actions >> Show action list... >> New action... >> Load ReaScript...``` and then select the ``OpenBitKlavier.lua`` file. After that, click on the new action created and add the shortcut ``Cmd+Opt+Shift+O``. Now, if you press that shortcut, a little window will appear with all the options needed for the piece.
+- Then, head to the Reaper application, go to ```Actions >> Show action list... >> New action... >> Load ReaScript...``` and then select the ``OpenBitKlavier.lua`` file. After that, click on the new action created and add the shortcut ``Cmd+Opt+Shift+O``. Now, if you press that shortcut, a little window will appear with all the options needed for the piece.
 
-To check if everything works correctly with the Arduino, you might need to change some bits in the code. Connect the Arduino to the computer and hit the reset button. Then, run the ``test_arduino.py`` file. If the console prints ``Connection success!`` then everything is fine! If not, make sure everything is connected properly and check which port the Arduino is connected to. Usually the port is ``/dev/cu.usbmodem[number]``. Copy that path and on the ``port_listener.py`` file, and paste it on the variable in line 4.
+- Now, click on the ``FX Setup`` button. A message box will appear and follow those steps to create presets on the bitKlavier plugin.
+
+- To check if everything works correctly with the Arduino, you might need to change some bits in the code. Connect the Arduino to the computer and hit the reset button. Then, run the ``test_arduino.py`` file. If the console prints ``Connection success!`` then everything is fine! If not, make sure everything is connected properly and check which port the Arduino is connected to. Usually the port is ``/dev/cu.usbmodem[number]``. Copy that path and on the ``port_listener.py`` file, and paste it on the variable in line 4.
+
+Now you're good to start playing!
+
+---
+
+### Play the piece
+
