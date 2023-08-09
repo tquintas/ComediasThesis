@@ -25,10 +25,17 @@ Firstly, to use the contents of this repository, you have to clone the repositor
 
 That shell command will create an alias of the ``OpenBitKlavier.lua`` file in Reaper's resource pack folder, will create folders for the samples for bitKlavier and will test the connection for Arduino. If the console prints ``Connection success!`` then everything is fine! If not, make sure everything is connected properly and check which port the Arduino is connected to. Usually the port is ``/dev/cu.usbmodem[number]``. Copy that path and on the ``port_listener.py`` file, and paste it on the variable in line 4.
 
-Then, head to the Reaper application, go to ```Actions >> Show action list... >> New action... >> Load ReaScript...``` and then select the ``OpenBitKlavier.lua`` file. After that, click on the new action created and add the shortcut ``Cmd+Opt+Shift+O``. Now, if you press that shortcut, a little window will appear with all the options needed for the piece. Click on the ``FX Setup`` button. A message box will appear and follow those steps to create presets on the bitKlavier plugin.
+Then, head to the Reaper application, go to ```Actions >> Show action list... >> New action... >> Load ReaScript...``` and then select the ``OpenBitKlavier.lua`` file. After that, click on the new action created and add the shortcut ``Cmd+Opt+Shift+O``. Now, if you press that shortcut, a little window will appear with all the options needed for the piece. Click on the ``FX Setup`` button. A message box will appear and follow those steps to create presets on the bitKlavier plugin. Close Reaper.
 
 Now you're good to start playing!
 
 ---
 
 ### Play the piece
+To start playing, first check if your keyboard os connected to the the mixer by MIDI and that your audio output is set correctly. Then, open the file ``rendering.ino`` and upload the code to your Arduino, after connecting all the components to it. Each module is constructed like the image of the file ``arduino.key``, with a total of 5 models. Then, open the terminal, navigate to your repo folder and run:
+
+    $ ./start.sh
+
+This will open Reaper, load all the plugins and stablish a serial connection between the Arduino and the python code that renders new samples and new bitKlavier's galleries.
+
+You can, then, start playing! Good luck! :D
