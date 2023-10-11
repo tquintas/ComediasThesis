@@ -1,0 +1,26 @@
+\documentclass[12pt]{article}
+\usepackage{helvet}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper, left=3cm, top=3cm, right=2.5cm, bottom=3cm]{geometry}
+\usepackage{cite}
+\usepackage{titlesec}
+\usepackage{subfiles}
+\linespread{1.24}
+\renewcommand\familydefault{\sfdefault}
+\titleformat{\subsection}%
+{\normalfont\large}{\hspace*{\parindent}\thesubsection}{1em}{\hrulefill\hspace*{2pt}\raisebox{-.1\ht\strutbox}}
+
+\begin{document}
+
+\section*{Introdução}
+
+\section*{Estado de Arte}
+\subfile{Chapters/state_of_art.tex}
+
+\section*{A Obra}
+\subfile{Chapters/scenes.tex}
+
+
+\bibliography{bibthesis}
+\bibliographystyle{unsrt}
+\end{document}

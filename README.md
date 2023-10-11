@@ -46,4 +46,5 @@ You can, then, start playing! Good luck! :D
 - [ ] Create the header files.
 - [ ] Re-read the state of art.
 - [ ] Complete the xml.cpp file.
-- [ ] ...
+- [ ] Make a file for every interlude, with the types of random sounds and random patches.
+- [ ] Make a file for every piece, with the correct patches and sounds.
