@@ -10,9 +10,7 @@ GUI.x, GUI.y, GUI.w, GUI.h = 0,0,220,310
 
 GUI.anchor, GUI.corner = "mouse", "C"
 
-Vol = 1
-
-function Fade(track, i)
+function Fade(track, i, Vol)
     reaper.SetMediaTrackInfo_Value(track, "D_VOL", Vol)
     Vol = Vol - 0.01
     if Vol < 0 then
@@ -22,14 +20,13 @@ function Fade(track, i)
         reaper.SetMediaTrackInfo_Value(track, "D_VOL", 1)
         return
     end
-    ultraschall.Defer((function() Fade(track, i) end), "track_fade", 2, 0.05)
+    ultraschall.Defer((function() Fade(track, i, Vol) end), "track_fade", 2, 0.05)
 end
 
 local function Reload(i)
-    Vol = 1
     local tr = reaper.GetTrack(0, i)
     if tr then
-        Fade(tr, i)
+        Fade(tr, i, 1.0)
     end
 end
 
