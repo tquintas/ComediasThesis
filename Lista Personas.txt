@@ -12,27 +12,40 @@
 		2.	Saw-like sounds, constrasting with Smooth sounds.
 	5.	Ana Lopes - Paixão - Quarto escuro
 		1.	Highly harmonized Keymaps, Directs and Nostalgics, with Complexed and High Profiled Resonances.
-		2.	
+		2.	Soft and calm sounds, lots of harmonized sounds.
 	6.	Mariana Vieira - Pânico - Sala de Espelhos
-
+		1.	Various layers of contrasting modules.
+		2.	Deeply orchestral sounds.
 	7.	T. Quintas - Atenção - Fábrica em Funcionamento
-
+		1.	Steady and Offsetted Repeated Synchronic Layers.
+		2.	Piano-like sounds, gradually shifting.
 	8.	Amilcar - Saudade - Campo de Dia
-
+		1.	High Profiled Nostalgic, with Streched Blendronic, with circling Synchronic.
+		2.	Warm and Smooth sounds
 	9.	Antonio SD - Receio - Noite Rural
-
+		1.	Melodic Synchronic, Short Blendronic with low feedback.
+		2.	Orchestral sounds.
 	10.	Eduardo - Confiança - Anfiteatro
-
+		1.	High Profiled Tunnings affecting Directs, Synchronics and Resonances.
+		2.	Piano-like sounds.
 	11.	Jaime Reis - Ansiedade - Anéis de Saturno
-
+		1.	Layered and Complex Blendronics, Superfast Synchronics.
+		2.	String-like sounds with contrasting harmonic components.
 	12.	Clotilde Rosa - Hipnose - Laboratório
-
+		1.	Wavy and Long Synchronic, paired with Short Nostalgic and Soft Blendronic.
+		2.	Hight attack sounds, with complex shifting on the harmonic content.
 	13.	JPO - Procrastinação - Centro de um Buraco Negro
-
+		1.	Synchronic with Repeated Figures, Blendronic catching Smooth Drones.
+		2.	Sounds with low attack and poor harminc content, paired with low drones.
 	14.	Bochmann - Determinação - Auditório
-
+		1.	Really long and atuned Synchronic, spiraling out, with Sparse Nostalgic.
+		2.	Constrasting sounds with low attack.
 	15.	JSB - Plenitude - Planície Alentejana
-
+		1.	Syncopated and Complex Synchronic, with Droning Nostalgic and Blendronic.
+		2.	Windy sounds, contrasted with sharp and stringgy sounds.
 	16.	Ana Telles - Ternura - Catedral
-
+		1.	Higly Textured and Layered Resonances, Slow and Harmonically Rich Modules
+		2.	Bids chants, long and reverberated drones.
 	17.	PMR - Curiosidade - Fábrica Abandonada
+		1.	Complex Misture of all modules, almost random.
+		2.	Complex misture of sound profiles.
