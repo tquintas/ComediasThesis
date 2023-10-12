@@ -1,3 +1,6 @@
+#ifndef QSYNTH_H
+#define QSYNTH_H
+
 #include <string>
 #include <cstring>
 #include <cstdlib>
@@ -353,3 +356,5 @@ namespace QSynth
             //by complexity
     };
 }
+
+#endif
