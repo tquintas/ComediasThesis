@@ -5,6 +5,9 @@ biblio/
 biblio/*.pdf
 biblio/*.pages
 
+*/testing.*
+*.dSYM
+
 *.DS_Store
 
 ## Core latex/pdflatex auxiliary files:
