@@ -344,3 +344,6 @@ TSWLatexianTemp*
 *.exe
 *.out
 *.app
+
+code/testing
+code/render
