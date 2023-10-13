@@ -117,7 +117,7 @@ void MakeSynth(int complexity)
     SynthNote* sn2 = new SynthNote();
     SynthNote* sn3 = new SynthNote();
 
-    sine_wave sw = sine_wave();
+    Waves* sw = new sine_wave();
     sn->AddRandomWave(complexity, sw);
     sn->AddRandomWaves(complexity);
     int complexity2 = floor(sqrt(complexity));

@@ -5,7 +5,6 @@ void clog(T val)
 {
     std::cout << val << std::endl;
 };
-std::string documents = std::string(getenv("HOME")) + "/Documents/";
 
 namespace QSynth
 {
@@ -43,7 +42,6 @@ namespace QSynth
         return piano;
     };
 
-    double Waves::f(double x) { return 0; }
     Waves* Waves::RandomWave()
     {
         std::uniform_int_distribution<int> uni(0, 9);

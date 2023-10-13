@@ -19,6 +19,8 @@
 
 namespace QSynth
 {
+    std::string documents = std::string(getenv("HOME")) + "/Documents/";
+    
     const double tunning = 440.0;
     const double max_complexity = 1024.0;
     std::mt19937 rng(std::random_device{}());
@@ -109,7 +111,7 @@ namespace QSynth
         public:
             double period = 1;
             //Amplitude value at the point x
-            virtual double f(double x);
+            virtual double f(double x) { return 0; };
             //Get an random wave profile
             static Waves* RandomWave();
     };
