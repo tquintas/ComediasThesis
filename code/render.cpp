@@ -1,6 +1,5 @@
-#include "xml.cpp"
+#include "./cbkr/bitklavier.hpp"
 
-using namespace SerialMatrix;
 using namespace QSynth;
 using namespace bkr;
 
