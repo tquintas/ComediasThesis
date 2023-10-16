@@ -43,8 +43,18 @@ You can, then, start playing! Good luck! :D
 ## Task list!
 
 - [x] Finish the GitHub repository.
-- [ ] Create the header files.
-- [ ] Re-read the state of art.
+- [x] Create the header files.
 - [ ] Complete the xml.cpp file.
 - [ ] Make a file for every interlude, with the types of random sounds and random patches.
 - [ ] Make a file for every piece, with the correct patches and sounds.
+
+## Dissertation task list!
+
+- [ ] Finish State of Art
+- [ ] Write the Introduction
+- [ ] Write begining of General Concepts
+- [ ] Finish the Scenes
+- [ ] Write the instalation
+- [ ] Write the meaning of the title and common concepts
+- [ ] Write about each comedy
+- [ ] Write the discussion
