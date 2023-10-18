@@ -1,26 +1,50 @@
-\documentclass[12pt]{article}
+\documentclass[11pt]{article}
+\usepackage[portuguese]{babel}
 \usepackage{helvet}
 \usepackage[T1]{fontenc}
 \usepackage[a4paper, left=3cm, top=3cm, right=2.5cm, bottom=3cm]{geometry}
+\usepackage{setspace}
+\usepackage[hang]{footmisc}
 \usepackage{cite}
 \usepackage{titlesec}
 \usepackage{subfiles}
-\linespread{1.24}
+\usepackage{minted}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\setstretch{1.5}
 \renewcommand\familydefault{\sfdefault}
 \titleformat{\subsection}%
 {\normalfont\large}{\hspace*{\parindent}\thesubsection}{1em}{\hrulefill\hspace*{2pt}\raisebox{-.1\ht\strutbox}}
 
+\newcommand{\Section}[1]{\clearpage\phantomsection\addcontentsline{toc}{section}{#1}\section*{#1}}
+\newcommand{\Subsection}[1]{\phantomsection\addcontentsline{toc}{subsection}{#1}\subsection*{#1}}
+\newcommand{\Subsubsection}[1]{\phantomsection\addcontentsline{toc}{subsubsection}{#1}\subsubsection*{#1}}
+
+\newcommand{\bkitem}[1]{\item[\textbf{#1:}]}
+
 \begin{document}
 
-\section*{Introdução}
+\tableofcontents
 
-\section*{Estado de Arte}
+\Section{Introdução}
+
+\Section{Estado de Arte}
 \subfile{Chapters/state_of_art.tex}
 
-\section*{A Obra}
+\Section{Conceitos Gerais da Obra}
 \subfile{Chapters/scenes.tex}
+\subfile{Chapters/composition.tex}
+\subfile{Chapters/eletronics.tex}
+\subfile{Chapters/instalation.tex}
 
-
+\clearpage\phantomsection\addcontentsline{toc}{section}{Referências}
 \bibliography{bibthesis}
 \bibliographystyle{unsrt}
 \end{document}

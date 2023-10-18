@@ -50,7 +50,7 @@ You can, then, start playing! Good luck! :D
 
 ## Dissertation task list!
 
-- [ ] Finish State of Art
+- [x] Finish State of Art
 - [ ] Write the Introduction
 - [ ] Write begining of General Concepts
 - [ ] Finish the Scenes

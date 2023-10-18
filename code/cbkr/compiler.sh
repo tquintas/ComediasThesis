@@ -20,4 +20,5 @@ echo "Linking..."
 files_ext=($(add_ext "${files[@]}"))
 libtool -static -o libbitKlavier.a "${files_ext[@]}" -L/usr/local/lib -lfftw3
 sudo cp libbitKlavier.a /usr/local/lib
+sudo cp bitklavier.hpp /usr/local/include
 echo "Complete!"
