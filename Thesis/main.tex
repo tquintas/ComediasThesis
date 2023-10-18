@@ -8,7 +8,7 @@
 \usepackage{cite}
 \usepackage{titlesec}
 \usepackage{subfiles}
-\usepackage{minted}
+\usepackage[cache=false]{minted}
 \usepackage{enumitem}
 \usepackage{hyperref}
 \hypersetup{
@@ -19,6 +19,10 @@
     urlcolor=black
 }
 \setstretch{1.5}
+\setminted{
+    fontsize=\footnotesize,
+    linenos=true
+}
 \renewcommand\familydefault{\sfdefault}
 \titleformat{\subsection}%
 {\normalfont\large}{\hspace*{\parindent}\thesubsection}{1em}{\hrulefill\hspace*{2pt}\raisebox{-.1\ht\strutbox}}
