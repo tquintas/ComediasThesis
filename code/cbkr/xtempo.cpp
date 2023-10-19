@@ -45,17 +45,17 @@ namespace bkr
             if (ds[key]) GetDirty(ds[key]);
         }
     }
-    void XTempo::SetTempo(double val, std::string opt = "")
+    void XTempo::SetTempo(double val, std::string opt)
     {
         if (std::find(std::begin(opts), std::end(opts), opt) == std::end(opts)) opt = "";
         param_attrs->UpdateCustomPair(XAttribute::bitKlavierAttributes.TempoParams.Tempo(val, opt));
     }
-    void XTempo::SetSubdivisions(double val, std::string opt = "")
+    void XTempo::SetSubdivisions(double val, std::string opt)
     {
         if (std::find(std::begin(opts), std::end(opts), opt) == std::end(opts)) opt = "";
         param_attrs->UpdateCustomPair(XAttribute::bitKlavierAttributes.TempoParams.Subdivisions(val, opt));
     }
-    void XTempo::SetConstantTempo(double tempo, double subdiv, std::string opt = "")
+    void XTempo::SetConstantTempo(double tempo, double subdiv, std::string opt)
     {
         if (std::find(std::begin(opts), std::end(opts), opt) == std::end(opts)) opt = "";
         param_attrs->UpdateCustomPair(XAttribute::bitKlavierAttributes.TempoParams.Tempo(tempo, opt));
@@ -63,7 +63,7 @@ namespace bkr
         if (opt == "_inc") return;
         param_attrs->UpdateCustomPair(XAttribute::bitKlavierAttributes.TempoParams.System(0, opt));
     }
-    void XTempo::SetAdaptiveTempo(double min, double max, double subdiv, int history = 4, int mode = 0, std::string opt = "")
+    void XTempo::SetAdaptiveTempo(double min, double max, double subdiv, int history = 4, int mode = 0, std::string opt)
     {
         if (std::find(std::begin(opts), std::end(opts), opt) == std::end(opts)) opt = "";
         param_attrs->UpdateCustomPair(XAttribute::bitKlavierAttributes.TempoParams.At1History(history, opt));
@@ -80,7 +80,7 @@ namespace bkr
         std::exponential_distribution<double> e2(complexity/max_complexity);
         SetConstantTempo(e1(rng), e2(rng));
     }
-    void XTempo::Save(std::string file_name = "XTempo.xml")
+    void XTempo::Save(std::string file_name)
     {
         std::string extra = moded ? "Mod/" : "/";
         file_name = "/Applications/bitKlavier/preparations/Tempo" + extra + file_name;

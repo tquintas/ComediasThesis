@@ -100,69 +100,69 @@ namespace bkr
             first = false;
         };
     };
-    void XNostalgic::SetReverseAttack(double a, std::string opt = "")
+    void XNostalgic::SetReverseAttack(double a, std::string opt)
     {
         a >= 0.0 || (a = 0.0);
         if (std::find(std::begin(opts), std::end(opts), opt) == std::end(opts)) opt = "";
         reverseADSR->UpdatePair(0, a, opt);
     };
-    void XNostalgic::SetUndertowAttack(double a, std::string opt = "")
+    void XNostalgic::SetUndertowAttack(double a, std::string opt)
     {
         a >= 0.0 || (a = 0.0);
         if (std::find(std::begin(opts), std::end(opts), opt) == std::end(opts)) opt = "";
         undertowADSR->UpdatePair(0, a, opt);
     };
-    void XNostalgic::SetReverseDecay(double d, std::string opt = "")
+    void XNostalgic::SetReverseDecay(double d, std::string opt)
     {
         d >= 0.0 || (d = 0.0);
         if (std::find(std::begin(opts), std::end(opts), opt) == std::end(opts)) opt = "";
         reverseADSR->UpdatePair(1, d, opt);
     };
-    void XNostalgic::SetUndertowDecay(double d, std::string opt = "")
+    void XNostalgic::SetUndertowDecay(double d, std::string opt)
     {
         d >= 0.0 || (d = 0.0);
         if (std::find(std::begin(opts), std::end(opts), opt) == std::end(opts)) opt = "";
         undertowADSR->UpdatePair(1, d, opt);
     };
-    void XNostalgic::SetReverseSustain(double s, std::string opt = "")
+    void XNostalgic::SetReverseSustain(double s, std::string opt)
     {
         (s <= 1.0 || (s = 1.0)) && (s >= 0.0 || (s = 0.0));
         if (std::find(std::begin(opts), std::end(opts), opt) == std::end(opts)) opt = "";
         reverseADSR->UpdatePair(2, s, opt);
     };
-    void XNostalgic::SetUndertowSustain(double s, std::string opt = "")
+    void XNostalgic::SetUndertowSustain(double s, std::string opt)
     {
         (s <= 1.0 || (s = 1.0)) && (s >= 0.0 || (s = 0.0));
         if (std::find(std::begin(opts), std::end(opts), opt) == std::end(opts)) opt = "";
         undertowADSR->UpdatePair(2, s, opt);
     };
-    void XNostalgic::SetReverseRelease(double r, std::string opt = "")
+    void XNostalgic::SetReverseRelease(double r, std::string opt)
     {
         r >= 0.0 || (r = 0.0);
         if (std::find(std::begin(opts), std::end(opts), opt) == std::end(opts)) opt = "";
         reverseADSR->UpdatePair(3, r, opt);
     };
-    void XNostalgic::SetUndertowRelease(double r, std::string opt = "")
+    void XNostalgic::SetUndertowRelease(double r, std::string opt)
     {
         r >= 0.0 || (r = 0.0);
         if (std::find(std::begin(opts), std::end(opts), opt) == std::end(opts)) opt = "";
         undertowADSR->UpdatePair(3, r, opt);
     };
-    void XNostalgic::SetReverseADSR(double a, double d, double s, double r, std::string opt = "")
+    void XNostalgic::SetReverseADSR(double a, double d, double s, double r, std::string opt)
     {
         SetReverseAttack(a, opt);
         SetReverseDecay(d, opt);
         SetReverseSustain(s, opt);
         SetReverseRelease(r, opt);
     };
-    void XNostalgic::SetUndertowADSR(double a, double d, double s, double r, std::string opt = "")
+    void XNostalgic::SetUndertowADSR(double a, double d, double s, double r, std::string opt)
     {
         SetUndertowAttack(a, opt);
         SetUndertowDecay(d, opt);
         SetUndertowSustain(s, opt);
         SetUndertowRelease(r, opt);
     };
-    void XNostalgic::RandomReverseADSR(int df = 5, double a_exp_val = 2.0, double d_exp_val = 5.0, double s_exp_val = 0.7, double r_exp_val = 250.0, double s_var = 0.1, std::string opt = "")
+    void XNostalgic::RandomReverseADSR(int df, double a_exp_val, double d_exp_val, double s_exp_val, double r_exp_val, double s_var, std::string opt)
     {
         std::chi_squared_distribution<double> chi(df);
         std::normal_distribution<double> norm(s_exp_val, s_var);
@@ -174,7 +174,7 @@ namespace bkr
         double r = re_scale(chi(rng)) * (r_exp_val / scaled);
         SetReverseADSR(a, d, s, r, opt);
     };
-    void XNostalgic::RandomUndertowADSR(int df = 5, double a_exp_val = 2.0, double d_exp_val = 5.0, double s_exp_val = 0.7, double r_exp_val = 250.0, double s_var = 0.1, std::string opt = "")
+    void XNostalgic::RandomUndertowADSR(int df, double a_exp_val, double d_exp_val, double s_exp_val, double r_exp_val, double s_var, std::string opt)
     {
         std::chi_squared_distribution<double> chi(df);
         std::normal_distribution<double> norm(s_exp_val, s_var);
@@ -209,7 +209,7 @@ namespace bkr
     {
         ((AddTransposition(n)), ...);
     };
-    void XNostalgic::RandomTranspositionsGauss(int n = 3, double exp_int = 0, double var_int = 7, char slope = 'e', bool root = true, bool integer = false)
+    void XNostalgic::RandomTranspositionsGauss(int n, double exp_int, double var_int, char slope, bool root, bool integer)
     {
         transposition->Clear();
         std::normal_distribution<double> norm(exp_int, var_int);
@@ -238,7 +238,7 @@ namespace bkr
             transposition->NewPair(i, vals[i]);
         }
     };
-    void XNostalgic::RandomTranspositionsChiSquared(int n = 3, bool above = true, int df = 5, double exp_int = 7, double max_int = 12, char slope = 'e', bool root = true, bool integer = false)
+    void XNostalgic::RandomTranspositionsChiSquared(int n, bool above, int df, double exp_int, double max_int, char slope, bool root, bool integer)
     {
         transposition->Clear();
         std::chi_squared_distribution<double> chi(df);
@@ -262,7 +262,7 @@ namespace bkr
             transposition->NewPair(i, vals[i]);
         }
     };
-    void XNostalgic::AddRandomTranspositionsGauss(int n = 3, double exp_int = 0, double var_int = 7, char slope = 'e', bool integer = false)
+    void XNostalgic::AddRandomTranspositionsGauss(int n, double exp_int, double var_int, char slope, bool integer)
     {
         std::normal_distribution<double> norm(exp_int, var_int);
         auto e_slope = [var_int](double val)
@@ -294,7 +294,7 @@ namespace bkr
             transposition->UpdatePair(i, vals[i]);
         }
     };
-    void XNostalgic::AddRandomTranspositionsChiSquared(int n = 3, bool above = true, int df = 5, double exp_int = 7, double max_int = 12, char slope = 'e', bool integer = false)
+    void XNostalgic::AddRandomTranspositionsChiSquared(int n, bool above, int df, double exp_int, double max_int, char slope, bool integer)
     {
         std::chi_squared_distribution<double> chi(df);
         auto e_slope = [max_int](double val) { return pow((max_int + 1.0), (val / max_int)) - 1.0; };
@@ -321,27 +321,27 @@ namespace bkr
             transposition->UpdatePair(i, vals[i]);
         }
     };
-    void XNostalgic::NoteLengthMultiplier(double val, std::string opt = "")
+    void XNostalgic::NoteLengthMultiplier(double val, std::string opt)
     {
         if (std::find(std::begin(opts), std::end(opts), opt) == std::end(opts)) opt = "";
         param_attrs->UpdateCustomPair(XAttribute::bitKlavierAttributes.NostalgicParams.LengthMultiplier(val, opt));
     };
-    void XNostalgic::WaveDistance(double val, std::string opt = "")
+    void XNostalgic::WaveDistance(double val, std::string opt)
     {
         if (std::find(std::begin(opts), std::end(opts), opt) == std::end(opts)) opt = "";
         param_attrs->UpdateCustomPair(XAttribute::bitKlavierAttributes.NostalgicParams.WaveDistance(val, opt));
     }
-    void XNostalgic::RandomWaveDistance(double lambda = 0.01)
+    void XNostalgic::RandomWaveDistance(double lambda)
     {
         std::exponential_distribution<double> e(lambda);
         WaveDistance(e(rng));
     }
-    void XNostalgic::Undertow(double val, std::string opt = "")
+    void XNostalgic::Undertow(double val, std::string opt)
     {
         if (std::find(std::begin(opts), std::end(opts), opt) == std::end(opts)) opt = "";
         param_attrs->UpdateCustomPair(XAttribute::bitKlavierAttributes.NostalgicParams.Undertow(val, opt));
     }
-    void XNostalgic::RandomUndertow(double lambda = 0.002)
+    void XNostalgic::RandomUndertow(double lambda)
     {
         std::exponential_distribution<double> e(lambda);
         Undertow(e(rng));
@@ -357,7 +357,7 @@ namespace bkr
         RandomUndertow();
         NoteLengthMultiplier(1.0+val*5.0);
     };
-    void XNostalgic::Save(std::string file_name = "XNostalgic.xml")
+    void XNostalgic::Save(std::string file_name)
     {
         std::string extra = moded ? "Mod/" : "/";
         file_name = "/Applications/bitKlavier/preparations/Nostalgic" + extra + file_name;

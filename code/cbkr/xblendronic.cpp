@@ -220,7 +220,7 @@ namespace bkr
     {
         (AddFeedbackCoefficient(coeffs), ...);
     }
-    void XBlendronic::AddRandomBeatsChiSquared(Beats beat_type = BEATS, int n = 10, int df = 5, double exp_val = 5.0, double min_val = 0.0, double max_val = 10.0, double curve = 12.0, char slope = 'e')
+    void XBlendronic::AddRandomBeatsChiSquared(Beats beat_type, int n, int df, double exp_val, double min_val, double max_val, double curve, char slope)
     {
         std::chi_squared_distribution<double> chi(df);
         auto e_slope = [curve](double val) { return pow((curve + 1.0), (val / curve)) - 1.0; };
@@ -232,7 +232,7 @@ namespace bkr
             Add(beat_type, std::max(std::min(val*scaled, max_val), min_val));
         }
     }
-    void XBlendronic::RandomBeatsChiSquared(Beats beat_type = BEATS, int n = 10, int df = 5, double exp_val = 5.0, double min_val = 0.0, double max_val = 10.0, double curve = 12.0, char slope = 'e')
+    void XBlendronic::RandomBeatsChiSquared(Beats beat_type, int n, int df, double exp_val, double min_val, double max_val, double curve, char slope)
     {
         switch (beat_type)
         {
@@ -270,7 +270,7 @@ namespace bkr
         RandomBeatsChiSquared(SMOOTHS, u(rng), 3, s_center, 0, s_center*(1+2.5*ival));
         RandomBeatsChiSquared(COEFFS, u(rng), 3, c_center, 0, 0.995); 
     }
-    void XBlendronic::Save(std::string file_name = "XBlendronic.xml")
+    void XBlendronic::Save(std::string file_name)
     {
         std::string extra = moded ? "Mod/" : "/";
         file_name = "/Applications/bitKlavier/preparations/Blendronic" + extra + file_name;

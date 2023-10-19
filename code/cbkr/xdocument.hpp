@@ -20,7 +20,7 @@ namespace bkr
             //Assignment
             XDocument& operator=(XDocument&& other);
             //Save the parsed xml into a .xml file
-            void Save(std::string file_name);
+            void Save(std::string file_name = "xmlDocument.xml");
     };
 }
 

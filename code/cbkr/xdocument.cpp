@@ -18,7 +18,7 @@ namespace bkr
         };
         return *this;
     };
-    void XDocument::Save(std::string file_name = "xmlDocument.xml")
+    void XDocument::Save(std::string file_name)
     {
         std::ofstream fs(file_name);
         if (fs.is_open())

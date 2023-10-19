@@ -226,7 +226,7 @@ namespace bkr
         ADSRs->Clear();
         AddADSR(a,d,s,r);
     }
-    void XSynchronic::AddRandomADSR(int df = 5, double a_exp_val = 2.0, double d_exp_val = 5.0, double s_exp_val = 0.7, double r_exp_val = 250.0, double s_var = 0.1)
+    void XSynchronic::AddRandomADSR(int df, double a_exp_val, double d_exp_val, double s_exp_val, double r_exp_val, double s_var)
     {
         std::chi_squared_distribution<double> chi(df);
         std::normal_distribution<double> norm(s_exp_val, s_var);
@@ -238,7 +238,7 @@ namespace bkr
         double r = re_scale(chi(rng)) * (r_exp_val / scaled);
         AddADSR(a, d, s, r);
     };
-    void XSynchronic::AddRandomTranpositionsGauss(int n = 10, int max_cluster = 1, double exp_int = 0, double var_int = 7, char slope = 'e', bool integer = false)
+    void XSynchronic::AddRandomTranpositionsGauss(int n, int max_cluster, double exp_int, double var_int, char slope, bool integer)
     {
         std::normal_distribution<double> norm(exp_int, var_int);
         std::uniform_int_distribution<int> clu(1, max_cluster);
@@ -264,12 +264,12 @@ namespace bkr
             AddTranspositions(vals);
         }
     }
-    void XSynchronic::RandomTranpositionsGauss(int n = 10, int max_cluster = 1, double exp_int = 0, double var_int = 7, char slope = 'e', bool integer = false)
+    void XSynchronic::RandomTranpositionsGauss(int n, int max_cluster, double exp_int, double var_int, char slope, bool integer)
     {
         transp_offsets->Clear();
         AddRandomTranpositionsGauss(n, max_cluster, exp_int, var_int, slope, integer);
     }
-    void XSynchronic::AddRandomTranpositionsChiSquared(int n = 10, int max_cluster = 1, bool above = true, int df = 5, double exp_int = 7, double max_int = 12, char slope = 'e', bool integer = false)
+    void XSynchronic::AddRandomTranpositionsChiSquared(int n, int max_cluster, bool above, int df, double exp_int, double max_int, char slope, bool integer)
     {
         std::chi_squared_distribution<double> chi(df);
         auto e_slope = [max_int](double val) { return pow((max_int + 1.0), (val / max_int)) - 1.0; };
@@ -290,12 +290,12 @@ namespace bkr
             AddTranspositions(vals);
         }
     }
-    void XSynchronic::RandomTranpositionsChiSquared(int n = 10, int max_cluster = 1, bool above = true, int df = 5, double exp_int = 7, double max_int = 12, char slope = 'e', bool integer = false)
+    void XSynchronic::RandomTranpositionsChiSquared(int n, int max_cluster, bool above, int df, double exp_int, double max_int, char slope, bool integer)
     {
         transp_offsets->Clear();
         AddRandomTranpositionsChiSquared(n, max_cluster, above, df, exp_int, max_int, slope, integer);
     }
-    void XSynchronic::AddRandomBeatsGauss(int n = 10, double exp_int = 1, double var_int = 1, char slope = 'e', bool integer = false)
+    void XSynchronic::AddRandomBeatsGauss(int n, double exp_int, double var_int, char slope, bool integer)
     {
         std::normal_distribution<double> norm(exp_int, var_int);
         auto round = [integer](double val) { return integer ? std::round(val) : val; };
@@ -315,12 +315,12 @@ namespace bkr
             AddBeatMultiplier(round(val));
         }
     }
-    void XSynchronic::RandomBeatsGauss(int n = 10, double exp_int = 1, double var_int = 1, char slope = 'e', bool integer = false)
+    void XSynchronic::RandomBeatsGauss(int n, double exp_int, double var_int, char slope, bool integer)
     {
         beats->get(XName::bitKlavierTagNames.BeatMultipliers)->Clear();
         AddRandomBeatsGauss(n, exp_int, var_int, slope, integer);
     }
-    void XSynchronic::AddRandomBeatsChiSquared(int n = 10, bool above = true, int df = 5, double exp_int = 1, double max_int = 12, char slope = 'e', bool integer = false)
+    void XSynchronic::AddRandomBeatsChiSquared(int n, bool above, int df, double exp_int, double max_int, char slope, bool integer)
     {
         std::chi_squared_distribution<double> chi(df);
         auto e_slope = [max_int](double val) { return pow((max_int + 1.0), (val / max_int)) - 1.0; };
@@ -335,12 +335,12 @@ namespace bkr
             AddBeatMultiplier(round(val));
         }
     }
-    void XSynchronic::RandomBeatsChiSquared(int n = 10, bool above = true, int df = 5, double exp_int = 1, double max_int = 12, char slope = 'e', bool integer = false)
+    void XSynchronic::RandomBeatsChiSquared(int n, bool above, int df, double exp_int, double max_int, char slope, bool integer)
     {
         beats->get(XName::bitKlavierTagNames.BeatMultipliers)->Clear();
         AddRandomBeatsChiSquared(n, above, df, exp_int, max_int, slope, integer);
     }
-    void XSynchronic::AddRandomLengthsGauss(int n = 10, double exp_int = 1, double var_int = 1, char slope = 'e', bool integer = false)
+    void XSynchronic::AddRandomLengthsGauss(int n, double exp_int, double var_int, char slope, bool integer)
     {
         std::normal_distribution<double> norm(exp_int, var_int);
         auto round = [integer](double val) { return integer ? std::round(val) : val; };
@@ -360,12 +360,12 @@ namespace bkr
             AddLengthMultiplier(round(val));
         }
     }
-    void XSynchronic::RandomLengthsGauss(int n = 10, double exp_int = 1, double var_int = 1, char slope = 'e', bool integer = false)
+    void XSynchronic::RandomLengthsGauss(int n, double exp_int, double var_int, char slope, bool integer)
     {
         beats->get(XName::bitKlavierTagNames.LengthMultipliers)->Clear();
         AddRandomLengthsGauss(n, exp_int, var_int, slope, integer);
     }
-    void XSynchronic::AddRandomLengthsChiSquared(int n = 10, bool above = true, int df = 5, double exp_int = 1, double max_int = 12, char slope = 'e', bool integer = false)
+    void XSynchronic::AddRandomLengthsChiSquared(int n, bool above, int df, double exp_int, double max_int, char slope, bool integer)
     {
         std::chi_squared_distribution<double> chi(df);
         auto e_slope = [max_int](double val) { return pow((max_int + 1.0), (val / max_int)) - 1.0; };
@@ -380,12 +380,12 @@ namespace bkr
             AddLengthMultiplier(round(val));
         }
     }
-    void XSynchronic::RandomLengthsChiSquared(int n = 10, bool above = true, int df = 5, double exp_int = 1, double max_int = 12, char slope = 'e', bool integer = false)
+    void XSynchronic::RandomLengthsChiSquared(int n, bool above, int df, double exp_int, double max_int, char slope, bool integer)
     {
         beats->get(XName::bitKlavierTagNames.LengthMultipliers)->Clear();
         AddRandomLengthsChiSquared(n, above, df, exp_int, max_int, slope, integer);
     }
-    void XSynchronic::AddRandomAccentsGauss(int n = 10, double exp_int = 1, double var_int = 1, char slope = 'e', bool integer = false)
+    void XSynchronic::AddRandomAccentsGauss(int n, double exp_int, double var_int, char slope, bool integer)
     {
         std::normal_distribution<double> norm(exp_int, var_int);
         auto round = [integer](double val) { return integer ? std::round(val) : val; };
@@ -405,12 +405,12 @@ namespace bkr
             AddAccentMultiplier(round(val));
         }
     }
-    void XSynchronic::RandomAccentsGauss(int n = 10, double exp_int = 1, double var_int = 1, char slope = 'e', bool integer = false)
+    void XSynchronic::RandomAccentsGauss(int n, double exp_int, double var_int, char slope, bool integer)
     {
         beats->get(XName::bitKlavierTagNames.AccentMultipliers)->Clear();
         AddRandomAccentsGauss(n, exp_int, var_int, slope, integer);
     }
-    void XSynchronic::AddRandomAccentsChiSquared(int n = 10, bool above = true, int df = 5, double exp_int = 1, double max_int = 12, char slope = 'e', bool integer = false)
+    void XSynchronic::AddRandomAccentsChiSquared(int n, bool above, int df, double exp_int, double max_int, char slope, bool integer)
     {
         std::chi_squared_distribution<double> chi(df);
         auto e_slope = [max_int](double val) { return pow((max_int + 1.0), (val / max_int)) - 1.0; };
@@ -425,23 +425,23 @@ namespace bkr
             AddAccentMultiplier(round(val));
         }
     }
-    void XSynchronic::RandomAccentsChiSquared(int n = 10, bool above = true, int df = 5, double exp_int = 1, double max_int = 12, char slope = 'e', bool integer = false)
+    void XSynchronic::RandomAccentsChiSquared(int n, bool above, int df, double exp_int, double max_int, char slope, bool integer)
     {
         beats->get(XName::bitKlavierTagNames.AccentMultipliers)->Clear();
         AddRandomAccentsChiSquared(n, above, df, exp_int, max_int, slope, integer);
     }
-    void XSynchronic::NumPulses(int n, int skip, std::string opt = "")
+    void XSynchronic::NumPulses(int n, int skip, std::string opt)
     {
         if (std::find(std::begin(opts), std::end(opts), opt) == std::end(opts)) opt = "";
         param_attrs->UpdateCustomPair(XAttribute::bitKlavierAttributes.SynchronicParams.NumBeats(n, opt));
         param_attrs->UpdateCustomPair(XAttribute::bitKlavierAttributes.SynchronicParams.BeatsToSkip(skip, opt));
     }
-    void XSynchronic::NumLayers(int n, std::string opt = "")
+    void XSynchronic::NumLayers(int n, std::string opt)
     {
         if (std::find(std::begin(opts), std::end(opts), opt) == std::end(opts)) opt = "";
         param_attrs->UpdateCustomPair(XAttribute::bitKlavierAttributes.SynchronicParams.NumClusters(n, opt));
     }
-    void XSynchronic::Cluster(int min, int max, int cap, double thresh, std::string opt = "")
+    void XSynchronic::Cluster(int min, int max, int cap, double thresh, std::string opt)
     {
         if (std::find(std::begin(opts), std::end(opts), opt) == std::end(opts)) opt = "";
         param_attrs->UpdateCustomPair(XAttribute::bitKlavierAttributes.SynchronicParams.ClusterMin(min, opt));
@@ -449,19 +449,19 @@ namespace bkr
         param_attrs->UpdateCustomPair(XAttribute::bitKlavierAttributes.SynchronicParams.ClusterCap(cap, opt));
         param_attrs->UpdateCustomPair(XAttribute::bitKlavierAttributes.SynchronicParams.ClusterThresh(thresh, opt));
     }
-    void XSynchronic::Velocity(int min, int max, std::string opt = "")
+    void XSynchronic::Velocity(int min, int max, std::string opt)
     {
         if (std::find(std::begin(opts), std::end(opts), opt) == std::end(opts)) opt = "";
         param_attrs->UpdateCustomPair(XAttribute::bitKlavierAttributes.SynchronicParams.VelocityMin(min, opt));
         param_attrs->UpdateCustomPair(XAttribute::bitKlavierAttributes.SynchronicParams.VelocityMax(max, opt));
     }
-    void XSynchronic::Hold(int min, int max, std::string opt = "")
+    void XSynchronic::Hold(int min, int max, std::string opt)
     {
         if (std::find(std::begin(opts), std::end(opts), opt) == std::end(opts)) opt = "";
         param_attrs->UpdateCustomPair(XAttribute::bitKlavierAttributes.SynchronicParams.HoldMin(min, opt));
         param_attrs->UpdateCustomPair(XAttribute::bitKlavierAttributes.SynchronicParams.HoldMax(max, opt));
     }
-    void XSynchronic::Modes(bool key_on, int pulse_triggered, std::string opt = "")
+    void XSynchronic::Modes(bool key_on, int pulse_triggered, std::string opt)
     {
         if (std::find(std::begin(opts), std::end(opts), opt) == std::end(opts)) opt = "";
         param_attrs->UpdateCustomPair(XAttribute::bitKlavierAttributes.SynchronicParams.OnOffMode(!key_on, opt));
@@ -489,7 +489,7 @@ namespace bkr
         NumLayers(clusters);
         Cluster(1, 60, 12, 100.0);
     }
-    void XSynchronic::Save(std::string file_name = "XSynchronic.xml")
+    void XSynchronic::Save(std::string file_name)
     {
         std::string extra = moded ? "Mod/" : "/";
         file_name = "/Applications/bitKlavier/preparations/Synchronic" + extra + file_name;

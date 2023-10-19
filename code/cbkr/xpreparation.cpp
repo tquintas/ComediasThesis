@@ -67,7 +67,7 @@ namespace bkr
     {
         dirty->UpdatePair(i, true);
     }
-    void XPreparation::Save(std::string file_name = "xmlPreparation.xml")
+    void XPreparation::Save(std::string file_name)
     {
         XDocument xdoc(this);
         xdoc.Save(file_name);

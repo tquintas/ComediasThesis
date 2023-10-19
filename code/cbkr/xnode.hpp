@@ -25,7 +25,7 @@ namespace bkr
             void setParent(XNode* par);
             XNode* getParent();
             //Get level of hierarchy
-            int getDepth(int i);
+            int getDepth(int i = 0);
             //Compare 2 nodes
             bool operator==(XNode* other);
             //Parse the xml

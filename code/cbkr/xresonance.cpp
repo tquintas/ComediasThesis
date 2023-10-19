@@ -85,38 +85,38 @@ namespace bkr
             first = false;
         };
     };
-    void XResonance::SetAttack(double a, std::string opt = "")
+    void XResonance::SetAttack(double a, std::string opt)
     {
         a >= 0.0 || (a = 0.0);
         if (std::find(std::begin(opts), std::end(opts), opt) == std::end(opts)) opt = "";
         ADSR->UpdatePair(0, a, opt);
     };
-    void XResonance::SetDecay(double d, std::string opt = "")
+    void XResonance::SetDecay(double d, std::string opt)
     {
         d >= 0.0 || (d = 0.0);
         if (std::find(std::begin(opts), std::end(opts), opt) == std::end(opts)) opt = "";
         ADSR->UpdatePair(1, d, opt);
     };
-    void XResonance::SetSustain(double s, std::string opt = "")
+    void XResonance::SetSustain(double s, std::string opt)
     {
         (s <= 1.0 || (s = 1.0)) && (s >= 0.0 || (s = 0.0));
         if (std::find(std::begin(opts), std::end(opts), opt) == std::end(opts)) opt = "";
         ADSR->UpdatePair(2, s, opt);
     };
-    void XResonance::SetRelease(double r, std::string opt = "")
+    void XResonance::SetRelease(double r, std::string opt)
     {
         r >= 0.0 || (r = 0.0);
         if (std::find(std::begin(opts), std::end(opts), opt) == std::end(opts)) opt = "";
         ADSR->UpdatePair(3, r, opt);
     };
-    void XResonance::SetADSR(double a, double d, double s, double r, std::string opt = "")
+    void XResonance::SetADSR(double a, double d, double s, double r, std::string opt)
     {
         SetAttack(a, opt);
         SetDecay(d, opt);
         SetSustain(s, opt);
         SetRelease(r, opt);
     };
-    void XResonance::RandomADSR(int df = 5, double a_exp_val = 2.0, double d_exp_val = 5.0, double s_exp_val = 0.7, double r_exp_val = 250.0, double s_var = 0.01, std::string opt = "")
+    void XResonance::RandomADSR(int df, double a_exp_val, double d_exp_val, double s_exp_val, double r_exp_val, double s_var, std::string opt)
     {
         std::chi_squared_distribution<double> chi(df);
         std::normal_distribution<double> norm(s_exp_val, s_var);
@@ -179,12 +179,12 @@ namespace bkr
             add->NewPair(c, note);
         }
     }
-    void XResonance::SetFundamentalKey(int note, std::string opt = "")
+    void XResonance::SetFundamentalKey(int note, std::string opt)
     {
         if (std::find(std::begin(opts), std::end(opts), opt) == std::end(opts)) opt = "";
         param_attrs->UpdateCustomPair(XAttribute::bitKlavierAttributes.ResonanceParams.FundamentalKey(note, opt));
     }
-    void XResonance::RandomResonances(int n = 10, double res_var = 1.0, double offset_var = 100.0, double gain_var = 0.1)
+    void XResonance::RandomResonances(int n, double res_var, double offset_var, double gain_var)
     {
         DefaultResonances();
         std::normal_distribution<double> norm(0.0, res_var);
@@ -226,7 +226,7 @@ namespace bkr
         std::vector<int> h = getRandomKeys(n2);
         for (int i : h) HoldNote(i);
     }
-    void XResonance::Save(std::string file_name = "XResonance.xml")
+    void XResonance::Save(std::string file_name)
     {
         std::string extra = moded ? "Mod/" : "/";
         file_name = "/Applications/bitKlavier/preparations/Resonance" + extra + file_name;

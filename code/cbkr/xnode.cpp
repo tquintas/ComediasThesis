@@ -16,7 +16,7 @@ namespace bkr
     {
         offset = off;
     };
-    int XNode::getDepth(int i = 0)
+    int XNode::getDepth(int i)
     {
         if (parent == nullptr) return i;
         return parent->getDepth(i+1);

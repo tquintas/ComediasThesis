@@ -50,7 +50,7 @@ namespace bkr
             //Turn dirty some moded parameter
             void GetDirty(int i);
             //Save the preparation into bitKlavier
-            void Save(std::string file_name);
+            void Save(std::string file_name = "xmlPreparation.xml");
     };
 }
 

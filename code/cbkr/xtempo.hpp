@@ -33,14 +33,14 @@ namespace bkr
             template <typename T>
             void SetParamAttribute(std::string key, T value);
             //Parameter Setters
-            void SetTempo(double val, std::string opt);
-            void SetSubdivisions(double val, std::string opt);
-            void SetConstantTempo(double tempo, double subdiv, std::string opt);
-            void SetAdaptiveTempo(double min, double max, double subdiv, int history, int mode, std::string opt);
+            void SetTempo(double val, std::string opt = "");
+            void SetSubdivisions(double val, std::string opt = "");
+            void SetConstantTempo(double tempo, double subdiv, std::string opt = "");
+            void SetAdaptiveTempo(double min, double max, double subdiv, int history, int mode, std::string opt = "");
             //Set a random Tempo preparation
             void RandomTempo(int complexity);
             //Save the preparation into bitKlaiver
-            void Save(std::string file_name);
+            void Save(std::string file_name = "XTempo.xml");
     };
 }
 

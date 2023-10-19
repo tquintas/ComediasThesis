@@ -168,7 +168,7 @@ namespace bkr
         }
         SetSpringParamAttribute(XAttribute::bitKlavierAttributes.SpringParams.IntervalTuningId(8));
     }
-    void XTuning::RandomCustomSpringScale(double mean = 0.0, double std_dev = 25.0)
+    void XTuning::RandomCustomSpringScale(double mean, double std_dev)
     {
         std::normal_distribution<double> n(mean, std_dev);
         for (int i = 0; i < 12; ++i)
@@ -200,7 +200,7 @@ namespace bkr
             AddAbsoluteOffset(std::get<0>(t), std::get<1>(t));
         }
     }
-    void XTuning::RandomAbsoluteOffsets(int n = 10, double key_mean = 60, double key_stddev = 32, double off_mean = 0.0, double off_stddev = 25.0)
+    void XTuning::RandomAbsoluteOffsets(int n, double key_mean, double key_stddev, double off_mean, double off_stddev)
     {
         std::normal_distribution<double> norm(off_mean, off_stddev);
         std::vector<int> keys = getRandomKeys(n, 0, 256, key_mean, key_stddev);
@@ -236,7 +236,7 @@ namespace bkr
             AddTether(std::get<0>(t), std::get<1>(t));
         }
     }
-    void XTuning::RandomTethers(int n = 10, double key_mean = 60, double key_stddev = 32, double tth_mean = 0.5, double tth_stddev = 0.25)
+    void XTuning::RandomTethers(int n, double key_mean, double key_stddev, double tth_mean, double tth_stddev)
     {
         std::normal_distribution<double> norm(tth_mean, tth_stddev);
         std::vector<int> keys = getRandomKeys(n, 0, 128, key_mean, key_stddev);
@@ -259,7 +259,7 @@ namespace bkr
             spring_mode->UpdatePair(i, modes[i]);
         }
     }
-    void XTuning::RandomSprings(double mean = 0.5, double std_dev = 0.25)
+    void XTuning::RandomSprings(double mean, double std_dev)
     {
         std::normal_distribution<double> n(mean, std_dev);
         std::bernoulli_distribution b(0.5);
@@ -343,7 +343,7 @@ namespace bkr
         SetSpringParamAttribute(XAttribute::bitKlavierAttributes.SpringParams.FundamentalSetsTether(false));
         SetSpringParamAttribute(XAttribute::bitKlavierAttributes.SpringParams.IntervalFundamental(u(rng)));
     }
-    void XTuning::Save(std::string file_name = "XTuning.xml")
+    void XTuning::Save(std::string file_name)
     {
         std::string extra = moded ? "Mod/" : "/";
         file_name = "/Applications/bitKlavier/preparations/Tuning" + extra + file_name;

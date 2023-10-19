@@ -97,50 +97,52 @@ namespace bkr
             //Set an ADSR envelope
             void SetADSR(double a, double d, double s, double r);
             //Add a random ADSR envelope
-            void AddRandomADSR(int df, double a_exp_val, double d_exp_val, double s_exp_val, double r_exp_val, double s_var);
+            void AddRandomADSR(int df = 5, double a_exp_val = 2.0, double d_exp_val = 5.0, double s_exp_val = 0.7, double r_exp_val = 250.0, double s_var = 0.1);
             //Add random transposition offsets, following a Gaussian distribution
-            void AddRandomTranpositionsGauss(int n, int max_cluster, double exp_int, double var_int, char slope, bool integer);
+            void AddRandomTranpositionsGauss(int n = 10, int max_cluster = 1, double exp_int = 0, double var_int = 7, char slope = 'e', bool integer = false);
             //Set random transposition offsets, following a Gaussian distribution
-            void RandomTranpositionsGauss(int n, int max_cluster, double exp_int, double var_int, char slope, bool integer);
+            void RandomTranpositionsGauss(int n = 10, int max_cluster = 1, double exp_int = 0, double var_int = 7, char slope = 'e', bool integer = false);
             //Add random transposition offsets, following a Chi-Squared distribution
-            void AddRandomTranpositionsChiSquared(int n, int max_cluster, bool above, int df, double exp_int, double max_int, char slope, bool integer);
+            void AddRandomTranpositionsChiSquared(int n = 10, int max_cluster = 1, bool above = true, int df = 5, double exp_int = 7, double max_int = 12, char slope = 'e', bool integer = false);
             //Set random transposition offsets, following a Chi-Squared distribution
-            void RandomTranpositionsChiSquared(int n, int max_cluster, bool above, int df, double exp_int, double max_int, char slope, bool integer);
+            void RandomTranpositionsChiSquared(int n = 10, int max_cluster = 1, bool above = true, int df = 5, double exp_int = 7, double max_int = 12, char slope = 'e', bool integer = false);
             //Add random beat multipliers, following a Gaussian distribution
-            void AddRandomBeatsGauss(int n, double exp_int, double var_int, char slope, bool integer);
+            void AddRandomBeatsGauss(int n = 10, double exp_int = 1, double var_int = 1, char slope = 'e', bool integer = false);
             //Set random beat multipliers, following a Gaussian distribution
-            void RandomBeatsGauss(int n, double exp_int, double var_int, char slope, bool integer);
+            void RandomBeatsGauss(int n = 10, double exp_int = 1, double var_int = 1, char slope = 'e', bool integer = false);
             //Add random beat multipliers, following a Chi-Squared distribution
-            void AddRandomBeatsChiSquared(int n, bool above, int df, double exp_int, double max_int, char slope, bool integer);
+            void AddRandomBeatsChiSquared(int n = 10, bool above = true, int df = 5, double exp_int = 1, double max_int = 12, char slope = 'e', bool integer = false);
             //Set random beat multipliers, following a Chi-Squared distribution
-            void RandomBeatsChiSquared(int n, bool above, int df, double exp_int, double max_int, char slope, bool integer);
+            void RandomBeatsChiSquared(int n = 10, bool above = true, int df = 5, double exp_int = 1, double max_int = 12, char slope = 'e', bool integer = false);
             //Add random length multipliers, following a Gaussian distribution
-            void AddRandomLengthsGauss(int n, double exp_int, double var_int, char slope, bool integer);
+            void AddRandomLengthsGauss(int n = 10, double exp_int = 1, double var_int = 1, char slope = 'e', bool integer = false);
             //Set random length multipliers, following a Gaussian distribution
-            void RandomLengthsGauss(int n, double exp_int, double var_int, char slope, bool integer);
+            void RandomLengthsGauss(int n = 10, double exp_int = 1, double var_int = 1, char slope = 'e', bool integer = false);
             //Add random length multipliers, following a Chi-Squared distribution
-            void AddRandomLengthsChiSquared(int n, bool above, int df, double exp_int, double max_int, char slope, bool integer);
+            void AddRandomLengthsChiSquared(int n = 10, bool above = true, int df = 5, double exp_int = 1, double max_int = 12, char slope = 'e', bool integer = false);
             //Set random length multipliers, following a Chi-Squared distribution
-            void RandomLengthsChiSquared(int n, bool above, int df, double exp_int, double max_int, char slope, bool integer);
+            void RandomLengthsChiSquared(int n = 10, bool above = true, int df = 5, double exp_int = 1, double max_int = 12, char slope = 'e', bool integer = false);
             //Add random accent multipliers, following a Gaussian distribution
-            void AddRandomAccentsGauss(int n, double exp_int, double var_int, char slope, bool integer);
+            void AddRandomAccentsGauss(int n = 10, double exp_int = 1, double var_int = 1, char slope = 'e', bool integer = false);
             //Set random accent multipliers, following a Gaussian distribution
-            void RandomAccentsGauss(int n, double exp_int, double var_int, char slope, bool integer);
+            void RandomAccentsGauss(int n = 10, double exp_int = 1, double var_int = 1, char slope = 'e', bool integer = false);
             //Add random length multipliers, following a Chi-Squared distribution
-            void AddRandomAccentsChiSquared(int n, bool above, int df, double exp_int, double max_int, char slope, bool integer);
+            void AddRandomAccentsChiSquared(int n = 10, bool above = true, int df = 5, double exp_int = 1, double max_int = 12, char slope = 'e', bool integer = false);
             //Set random length multipliers, following a Chi-Squared distribution
-            void RandomAccentsChiSquared(int n, bool above, int df, double exp_int, double max_int, char slope, bool integer);
+            void RandomAccentsChiSquared(int n = 10, bool above = true, int df = 5, double exp_int = 1, double max_int = 12, char slope = 'e', bool integer = false);
             //Change parameters
-            void NumPulses(int n, int skip, std::string opt);
-            void NumLayers(int n, std::string opt);
-            void Cluster(int min, int max, int cap, double thresh, std::string opt);
-            void Velocity(int min, int max, std::string opt);
-            void Hold(int min, int max, std::string opt);
-            void Modes(bool key_on, int pulse_triggered, std::string opt);
+            void NumPulses(int n, int skip, std::string opt = "");
+            void NumLayers(int n, std::string opt = "");
+            void Cluster(int min, int max, int cap, double thresh, std::string opt = "");
+            void Velocity(int min, int max, std::string opt = "");
+            void Hold(int min, int max, std::string opt = "");
+            void Modes(bool key_on, int pulse_triggered, std::string opt = "");
             //Set a random Synchronic preparation
             void RandomSynchronic(int complexity);
             //Save the preparation into bitKlavier
-            void Save(std::string file_name);
+            void Save(std::string file_name = "XSynchronic.xml");
+
+            //Add enumeration for BEATS
     };
 }
 

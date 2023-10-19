@@ -147,7 +147,7 @@ namespace bkr
         SetOffset(voffset);
         InvertVelocity(invert);
     };
-    void XKeymap::RandomVelocityCurving(int df = 5, double exp_val = 3, double offset_variance = 0.1)
+    void XKeymap::RandomVelocityCurving(int df, double exp_val, double offset_variance)
     {
         std::chi_squared_distribution<double> chi(df);
         std::normal_distribution<double> norm(0, offset_variance);
@@ -169,7 +169,7 @@ namespace bkr
             (*harmonizer)(i)->NewPair(0, i);
         };
     };
-    void XKeymap::RandomRangeHarmonizer(int n = 12, int lowestHarm = 0, int highestHarm = 127, int lowestKey = 0, int highestKey = 127, bool with_root = true)
+    void XKeymap::RandomRangeHarmonizer(int n, int lowestHarm, int highestHarm, int lowestKey, int highestKey, bool with_root)
     {
         std::uniform_int_distribution<int> dist(lowestHarm, highestHarm);
         for (int i = lowestKey; i <= highestKey; ++i)
@@ -190,7 +190,7 @@ namespace bkr
             };
         };
     };
-    void XKeymap::AddRandomRangeHarmonizer(int n = 3, int lowestHarm = 0, int highestHarm = 127, int lowestKey = 0, int highestKey = 127)
+    void XKeymap::AddRandomRangeHarmonizer(int n, int lowestHarm, int highestHarm, int lowestKey, int highestKey)
     {
         std::uniform_int_distribution<int> dist(lowestHarm, highestHarm);
         for (int i = lowestKey; i <= highestKey; ++i)
@@ -215,7 +215,7 @@ namespace bkr
             };
         };
     };
-    void XKeymap::RandomSparseHarmonizer(int n = 12, double sparseness = 0.5, int lowestHarm = 0, int highestHarm = 127, int lowestKey = 0, int highestKey = 127, bool with_root = true)
+    void XKeymap::RandomSparseHarmonizer(int n, double sparseness, int lowestHarm, int highestHarm, int lowestKey, int highestKey, bool with_root)
     {
         std::uniform_int_distribution<int> dist(lowestHarm, highestHarm);
         std::bernoulli_distribution bern(sparseness);
@@ -238,7 +238,7 @@ namespace bkr
             };
         };
     };
-    void XKeymap::RandomHarmonizer(int n = 12, double density = 0.5, int lowestHarm = 0, int highestHarm = 127, std::vector<int> ks = {60}, bool with_root = true)
+    void XKeymap::RandomHarmonizer(int n, double density, int lowestHarm, int highestHarm, std::vector<int> ks, bool with_root)
     {
         std::uniform_int_distribution<int> dist(lowestHarm, highestHarm);
         std::bernoulli_distribution bern(density);
@@ -261,7 +261,7 @@ namespace bkr
             };
         };
     };
-    void XKeymap::AddRandomSparseHarmonizer(int n = 3, double sparseness = 0.5, int lowestHarm = 0, int highestHarm = 127, int lowestKey = 0, int highestKey = 127)
+    void XKeymap::AddRandomSparseHarmonizer(int n, double sparseness, int lowestHarm, int highestHarm, int lowestKey, int highestKey)
     {
         std::uniform_int_distribution<int> dist(lowestHarm, highestHarm);
         std::bernoulli_distribution bern(sparseness);
@@ -301,7 +301,7 @@ namespace bkr
         RandomHarmonizer(n_of_harms, density, inter, 128 - inter, randK);
     }
     void XKeymap::Mod() {};
-    void XKeymap::Save(std::string file_name = "XKeymap.xml")
+    void XKeymap::Save(std::string file_name)
     {
         file_name = "/Applications/bitKlavier/preparations/Keymap" + file_name;
         XDocument xdoc(this);

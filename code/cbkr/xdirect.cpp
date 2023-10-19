@@ -75,38 +75,38 @@ namespace bkr
             first = false;
         };
     };
-    void XDirect::SetAttack(double a, std::string opt = "")
+    void XDirect::SetAttack(double a, std::string opt)
     {
         a >= 0.0 || (a = 0.0);
         if (std::find(std::begin(opts), std::end(opts), opt) == std::end(opts)) opt = "";
         ADSR->UpdatePair(0, a, opt);
     };
-    void XDirect::SetDecay(double d, std::string opt = "")
+    void XDirect::SetDecay(double d, std::string opt)
     {
         d >= 0.0 || (d = 0.0);
         if (std::find(std::begin(opts), std::end(opts), opt) == std::end(opts)) opt = "";
         ADSR->UpdatePair(1, d, opt);
     };
-    void XDirect::SetSustain(double s, std::string opt = "")
+    void XDirect::SetSustain(double s, std::string opt)
     {
         (s <= 1.0 || (s = 1.0)) && (s >= 0.0 || (s = 0.0));
         if (std::find(std::begin(opts), std::end(opts), opt) == std::end(opts)) opt = "";
         ADSR->UpdatePair(2, s, opt);
     };
-    void XDirect::SetRelease(double r, std::string opt = "")
+    void XDirect::SetRelease(double r, std::string opt)
     {
         r >= 0.0 || (r = 0.0);
         if (std::find(std::begin(opts), std::end(opts), opt) == std::end(opts)) opt = "";
         ADSR->UpdatePair(3, r, opt);
     };
-    void XDirect::SetADSR(double a, double d, double s, double r, std::string opt = "")
+    void XDirect::SetADSR(double a, double d, double s, double r, std::string opt)
     {
         SetAttack(a, opt);
         SetDecay(d, opt);
         SetSustain(s, opt);
         SetRelease(r, opt);
     };
-    void XDirect::RandomADSR(int df = 5, double a_exp_val = 2.0, double d_exp_val = 5.0, double s_exp_val = 0.7, double r_exp_val = 250.0, double s_var = 0.1, std::string opt = "")
+    void XDirect::RandomADSR(int df, double a_exp_val, double d_exp_val, double s_exp_val, double r_exp_val, double s_var, std::string opt)
     {
         std::chi_squared_distribution<double> chi(df);
         std::normal_distribution<double> norm(s_exp_val, s_var);
@@ -141,7 +141,7 @@ namespace bkr
     {
         ((AddTransposition(n)), ...);
     };
-    void XDirect::RandomTranspositionsGauss(int n = 3, double exp_int = 0, double var_int = 7, char slope = 'e', bool root = true, bool integer = false)
+    void XDirect::RandomTranspositionsGauss(int n, double exp_int, double var_int, char slope, bool root, bool integer)
     {
         transposition->Clear();
         std::normal_distribution<double> norm(exp_int, var_int);
@@ -170,7 +170,7 @@ namespace bkr
             transposition->NewPair(i, vals[i]);
         }
     };
-    void XDirect::RandomTranspositionsChiSquared(int n = 3, bool above = true, int df = 5, double exp_int = 7, double max_int = 12, char slope = 'e', bool root = true, bool integer = false)
+    void XDirect::RandomTranspositionsChiSquared(int n, bool above, int df, double exp_int, double max_int, char slope, bool root, bool integer)
     {
         transposition->Clear();
         std::chi_squared_distribution<double> chi(df);
@@ -194,7 +194,7 @@ namespace bkr
             transposition->NewPair(i, vals[i]);
         }
     };
-    void XDirect::AddRandomTranspositionsGauss(int n = 3, double exp_int = 0, double var_int = 7, char slope = 'e', bool integer = false)
+    void XDirect::AddRandomTranspositionsGauss(int n, double exp_int, double var_int, char slope, bool integer)
     {
         std::normal_distribution<double> norm(exp_int, var_int);
         auto e_slope = [var_int](double val)
@@ -226,7 +226,7 @@ namespace bkr
             transposition->UpdatePair(i, vals[i]);
         }
     };
-    void XDirect::AddRandomTranspositionsChiSquared(int n = 3, bool above = true, int df = 5, double exp_int = 7, double max_int = 12, char slope = 'e', bool integer = false)
+    void XDirect::AddRandomTranspositionsChiSquared(int n, bool above, int df, double exp_int, double max_int, char slope, bool integer)
     {
         std::chi_squared_distribution<double> chi(df);
         auto e_slope = [max_int](double val) { return pow((max_int + 1.0), (val / max_int)) - 1.0; };
@@ -260,7 +260,7 @@ namespace bkr
         RandomTranspositionsGauss(n_of_notes, 0.0, val*7.0, 'e', true, complexity < max_complexity/2);
         RandomADSR(n_of_notes+1, 2.0, 5.0, 0.7, 250.0, val*5.0);
     };
-    void XDirect::Save(std::string file_name = "XDirect.xml")
+    void XDirect::Save(std::string file_name)
     {
         std::string extra = moded ? "Mod/" : "/";
         file_name = "/Applications/bitKlavier/preparations/Direct" + extra + file_name;

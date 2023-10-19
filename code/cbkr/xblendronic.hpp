@@ -72,13 +72,13 @@ namespace bkr
             template <typename... A>
             void AddFeedbackCoefficients(A... coeffs);
             //Add random beats of type, following a Chi-Squared distribution
-            void AddRandomBeatsChiSquared(Beats beat_type, int n, int df, double exp_val, double min_val, double max_val, double curve, char slope);
+            void AddRandomBeatsChiSquared(Beats beat_type = BEATS, int n = 10, int df = 5, double exp_val = 5.0, double min_val = 0.0, double max_val = 10.0, double curve = 12.0, char slope = 'e');
             //Set random beats of type, following a Chi-Squared distribution
-            void RandomBeatsChiSquared(Beats beat_type, int n, int df, double exp_val, double min_val, double max_val, double curve, char slope);
+            void RandomBeatsChiSquared(Beats beat_type = BEATS, int n = 10, int df = 5, double exp_val = 5.0, double min_val = 0.0, double max_val = 10.0, double curve = 12.0, char slope = 'e');
             //Set a random Blendronic preparation
             void RandomBlendronic(int complexity);
             //Save the preparation into bitKlaiver
-            void Save(std::string file_name);
+            void Save(std::string file_name = "XBlendronic.xml");
     };
 }
 

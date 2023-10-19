@@ -57,20 +57,20 @@ namespace bkr
             //Set the default Undertow ADSR envelope
             void DefaultUndertowADSR();
             //ADSR Setters
-            void SetReverseAttack(double a, std::string opt);
-            void SetUndertowAttack(double a, std::string opt);
-            void SetReverseDecay(double d, std::string opt);
-            void SetUndertowDecay(double d, std::string opt);
-            void SetReverseSustain(double s, std::string opt);
-            void SetUndertowSustain(double s, std::string opt);
-            void SetReverseRelease(double r, std::string opt);
-            void SetUndertowRelease(double r, std::string opt);
-            void SetReverseADSR(double a, double d, double s, double r, std::string opt);
-            void SetUndertowADSR(double a, double d, double s, double r, std::string opt);
+            void SetReverseAttack(double a, std::string opt = "");
+            void SetUndertowAttack(double a, std::string opt = "");
+            void SetReverseDecay(double d, std::string opt = "");
+            void SetUndertowDecay(double d, std::string opt = "");
+            void SetReverseSustain(double s, std::string opt = "");
+            void SetUndertowSustain(double s, std::string opt = "");
+            void SetReverseRelease(double r, std::string opt = "");
+            void SetUndertowRelease(double r, std::string opt = "");
+            void SetReverseADSR(double a, double d, double s, double r, std::string opt = "");
+            void SetUndertowADSR(double a, double d, double s, double r, std::string opt = "");
             //Set a random Reverse ADSR envelope
-            void RandomReverseADSR(int df, double a_exp_val, double d_exp_val, double s_exp_val, double r_exp_val, double s_var, std::string opt);
+            void RandomReverseADSR(int df = 5, double a_exp_val = 2.0, double d_exp_val = 5.0, double s_exp_val = 0.7, double r_exp_val = 250.0, double s_var = 0.1, std::string opt = "");
             //Set a random Undertow ADSR envelope
-            void RandomUndertowADSR(int df, double a_exp_val, double d_exp_val, double s_exp_val, double r_exp_val, double s_var, std::string opt);
+            void RandomUndertowADSR(int df = 5, double a_exp_val = 2.0, double d_exp_val = 5.0, double s_exp_val = 0.7, double r_exp_val = 250.0, double s_var = 0.1, std::string opt = "");
             //Set the default transpositions
             void DefaultTranspositions();
             //Add a transposition
@@ -82,23 +82,23 @@ namespace bkr
             template <typename... A>
             void AddTranspositions(A... n);
             //Set random transpositions, following a Gaussian distribution
-            void RandomTranspositionsGauss(int n, double exp_int, double var_int, char slope, bool root, bool integer);
+            void RandomTranspositionsGauss(int n = 3, double exp_int = 0, double var_int = 7, char slope = 'e', bool root = true, bool integer = false);
             //Set random transpositions, following a Chi-Squared distribution
-            void RandomTranspositionsChiSquared(int n, bool above, int df, double exp_int, double max_int, char slope, bool root, bool integer);
+            void RandomTranspositionsChiSquared(int n = 3, bool above = true, int df = 5, double exp_int = 7, double max_int = 12, char slope = 'e', bool root = true, bool integer = false);
             //Add multiple random transpositions, following a Gaussian distribution
-            void AddRandomTranspositionsGauss(int n, double exp_int, double var_int, char slope, bool integer);
+            void AddRandomTranspositionsGauss(int n = 3, double exp_int = 0, double var_int = 7, char slope = 'e', bool integer = false);
             //Add multiple random transpositions, following a Chi-Squared distribution
-            void AddRandomTranspositionsChiSquared(int n, bool above, int df, double exp_int, double max_int, char slope, bool integer);
+            void AddRandomTranspositionsChiSquared(int n = 3, bool above = true, int df = 5, double exp_int = 7, double max_int = 12, char slope = 'e', bool integer = false);
             //Parameter Setters
-            void NoteLengthMultiplier(double val, std::string opt);
-            void WaveDistance(double val, std::string opt);
-            void RandomWaveDistance(double lambda);
-            void Undertow(double val, std::string opt);
-            void RandomUndertow(double lambda);
+            void NoteLengthMultiplier(double val, std::string opt = "");
+            void WaveDistance(double val, std::string opt = "");
+            void RandomWaveDistance(double lambda = 0.01);
+            void Undertow(double val, std::string opt = "");
+            void RandomUndertow(double lambda = 0.002);
             //Set a random Nostalgic preparation
             void RandomNostalgic(int complexity);
             //Save the preparation into bitKlavier
-            void Save(std::string file_name);
+            void Save(std::string file_name = "XNostalgic.xml");
     };
 }
 

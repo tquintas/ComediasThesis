@@ -58,25 +58,25 @@ namespace bkr
             void InvertVelocity(bool val);
             void SetVelocityCurving(double asymm_wrap, double symm_wrap, double scale, double voffset, bool invert);
             //Set a random velocity curve
-            void RandomVelocityCurving(int df, double exp_val, double offset_variance);
+            void RandomVelocityCurving(int df = 5, double exp_val = 3, double offset_variance = 0.1);
             //Set a default harmonizer
             void DefaultHarmonizer();
             //Set a random harmonizer, within a certain range
-            void RandomRangeHarmonizer(int n, int lowestHarm, int highestHarm, int lowestKey, int highestKey, bool with_root);
+            void RandomRangeHarmonizer(int n = 12, int lowestHarm = 0, int highestHarm = 127, int lowestKey = 0, int highestKey = 127, bool with_root = true);
             //Add a random harmonizer, within a certain range
-            void AddRandomRangeHarmonizer(int n, int lowestHarm, int highestHarm, int lowestKey, int highestKey);
+            void AddRandomRangeHarmonizer(int n = 3, int lowestHarm = 0, int highestHarm = 127, int lowestKey = 0, int highestKey = 127);
             //Set a random harmonizer, sparsed across the keymap
-            void RandomSparseHarmonizer(int n, double sparseness, int lowestHarm, int highestHarm, int lowestKey, int highestKey, bool with_root);
+            void RandomSparseHarmonizer(int n = 12, double sparseness = 0.5, int lowestHarm = 0, int highestHarm = 127, int lowestKey = 0, int highestKey = 127, bool with_root = true);
             //Set a random harmonizer
-            void RandomHarmonizer(int n, double density, int lowestHarm, int highestHarm, std::vector<int> ks, bool with_root);
+            void RandomHarmonizer(int n = 12, double density = 0.5, int lowestHarm = 0, int highestHarm = 127, std::vector<int> ks = {60}, bool with_root = true);
             //Add a random harmonizer, sparsed across the keymap
-            void AddRandomSparseHarmonizer(int n, double sparseness, int lowestHarm, int highestHarm, int lowestKey, int highestKey);
+            void AddRandomSparseHarmonizer(int n = 3, double sparseness = 0.5, int lowestHarm = 0, int highestHarm = 127, int lowestKey = 0, int highestKey = 127);
             //Set a random Keymap preparation
             void RandomKeymap(int complexity);
             //Modify the preparation (Not allowed)
             void Mod();
             //Save the preparation to bitKlavier
-            void Save(std::string file_name);
+            void Save(std::string file_name = "XKeymap.xml");
     };
 }
 
